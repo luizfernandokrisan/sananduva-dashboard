@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: dashboard-sananduva
+    runtime: python
+    plan: free
+    region: oregon
+    branch: main
+    buildCommand: |
+      pip install -r requirements.txt
+      python src/db/sqlite_bridge.py
+      python src/db/setup_auth.py
+    startCommand: gunicorn --chdir app app:server --bind 0.0.0.0:$PORT --workers 2 --timeout 120 --access-logfile -
+    envVars:
+      - key: SANANDUVA_SECRET
+        generateValue: true
+      - key: DASH_DEBUG
+        value: "false"
+      - key: PYTHON_VERSION
+        value: "3.12.0"
+    healthCheckPath: /login

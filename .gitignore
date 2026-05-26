@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Banco local (será recriado no deploy via buildCommand)
+data/sananduva.db
+
+# Logs
+*.log
+.cache/
+
+# Secrets
+.env
+.env.local
+
+# OS
+Thumbs.db
